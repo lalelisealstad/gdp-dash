@@ -1,0 +1,120 @@
+/* Import Roboto font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* General settings */
+body {
+    background-color: #0B0C10;
+    font-family: 'Roboto', sans-serif;
+    color: #C5C6C7;
+}
+
+
+/* Sidebar styling */
+.sidebar {
+    width: 25%; /* Smaller width for the sidebar */
+    background-color: #0B0C10;
+    color: #66FCF1;
+    margin-top: 40px;
+    margin-left: 40px; /* Ensure it is flush against the left */
+    text-align: left;
+    flex-shrink: 0; /* Prevent the sidebar from shrinking */
+}
+
+/* Content area styling */
+.content {
+    padding: 20px;
+}
+
+/* Row styling */
+.row {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+/* Column styling */
+.col {
+    flex: 1;
+    margin-top: 20px;
+}
+
+/* Figure styling */
+.row:last-child {
+    height: 400px;
+}
+
+/* Text styling */
+h1 {
+    margin-bottom: 0px;
+    margin-top: 10px;
+    font-family: "Roboto", sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #66FCF1;
+}
+
+h2 {
+    margin-bottom: 0px;
+    margin-top: 10px;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #C5C6C7;
+}
+
+p {
+    margin-bottom: 0px;
+    margin-top: 10px;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #45A29E;
+} 
+
+.sometext {
+    margin-bottom: 0px;
+    margin-top: 40px;
+    margin-left: 40px;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #C5C6C7;
+} 
+
+/* Dropdown styling */
+.Select-control {
+    margin-top: 25px;
+    background-color: #367D8A !important;
+    border-color: black  !important;
+}
+
+.Select-menu-outer {
+    background-color: #367D8A  !important;
+    color: #C5C6C7 !important;
+}
+
+.Select-option {
+    background-color: #C5C6C7 !important;
+    color: #C5C6C7 !important;
+}
+
+.Select-placeholder, .Select--single .Select-value {
+    color: #C5C6C7 !important;
+}
+
+.Select-input {
+    color: #C5C6C7 !important;
+}
+
+/* Ensuring the text color in the input field and selected option matches */
+.Select-input {
+    color: #C5C6C7 !important;
+}
+
+.Select--single .Select-value {
+    color: #C5C6C7 !important;
+}
+
+.Select-menu-outer .Select-option.is-focused {
+    background-color: #367D8A !important; /* Add this if you want to highlight focused options */
+    color: #367D8A !important;
+}
