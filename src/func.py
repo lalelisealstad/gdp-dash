@@ -6,6 +6,7 @@ def get_dict_countries():
     countries = wbdata.get_countries()
     countries_df = pd.DataFrame(countries)
     countries_df = countries_df[['name', 'iso2Code']]
+    countries_df = countries_df[~countries_df['iso2Code'].str[1].str.isdigit()]
     dict_c = dict(zip(countries_df['iso2Code'], countries_df['name']))
     return dict_c
 
@@ -81,8 +82,7 @@ import numpy as np
 def get_last_gdp(country_name, data):
     
     max_row = data.sort_values(by='date', ascending=False).iloc[0]
-    max_row.date
+    last_date = int(max_row.date)
     gdp_in_billions = np.round((int(max_row.GDP)/ 1_000_000_000),3)
-    text = f"{country_name} GDP in {max_row.date} was {gdp_in_billions} billion (current US dollars $)"
     
-    return text
+    return last_date, gdp_in_billions

@@ -61,8 +61,6 @@ app.layout = html.Div(
 
 def update_components(country_code): 
     
-    print(country_code)
-    
     dict_countries = get_dict_countries() 
     
     data = get_country_gdp(country_code)
@@ -71,8 +69,10 @@ def update_components(country_code):
     
     fig = make_gdp_fig(data, country_name)
     
+    latest_date, gdp_in_billions = get_last_gdp(country_name, data)
     
-    country_gdp_text = get_last_gdp(country_name, data)
+    country_gdp_text = f"{country_name} GDP in {latest_date} was {gdp_in_billions} billion (current US dollars $)"
+    
     
     return fig, country_gdp_text
 
