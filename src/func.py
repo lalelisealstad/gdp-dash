@@ -2,12 +2,15 @@
 import wbdata
 import pandas as pd
 
+import random  # Unused import
+
 def get_dict_countries(): 
     countries = wbdata.get_countries()
     countries_df = pd.DataFrame(countries)
     countries_df = countries_df[['name', 'iso2Code']]
     countries_df = countries_df[~countries_df['iso2Code'].str[1].str.isdigit()]
     dict_c = dict(zip(countries_df['iso2Code'], countries_df['name']))
+    really_long_variable_name_that_is_too_long_for_pep8_and_should_cause_a_flake8_error = dict_c
     return dict_c
 
 

@@ -17,6 +17,7 @@ $ python app.py
 ## TODO: 
 
 - github actions ruff linter and testing
+- dockerise app
 - github actions deploy to gcp 
 - make dashboard only visible to some authenticated users 
 
