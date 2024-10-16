@@ -20,12 +20,13 @@ A simple Flask Dash app that allows users to search for a country and visualize 
 - **Google Cloud Run**: Serverless platform for running the app.
 
 
-### Run app locally: 
+### Run app locally:
+```
 $ python3 -m venv .venv
 $ source .venv/bin/activate 
 $ poetry install 
 $ python app.py
-
+```
 
 
 
