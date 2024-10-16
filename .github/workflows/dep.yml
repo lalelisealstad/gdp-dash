@@ -1,10 +1,9 @@
-name: GDP Dasboard app 
+name: GDP Dashboard app
 
-on: 
-    push:
-      branches:
-        - main
-
+on:
+  push:
+    branches:
+      - '**'  # This triggers the build and test on any branch
 
 jobs:
   build:
@@ -25,7 +24,6 @@ jobs:
       - name: Install Poetry
         uses: snok/install-poetry@v1
 
-    
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
@@ -34,16 +32,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-poetry-
 
-
       - name: Install project
         run: poetry install --no-interaction
 
-        # Lint with flake8
+      # Lint with flake8
       - name: Lint with flake8
         run: |
-            poetry run pip install flake8
-            poetry run flake8 . --count --select=E402,F401,F811,F841 --max-line-length=127 --statistics
-
+          poetry run pip install flake8
+          poetry run flake8 . --count --select=E402,F401,F811,F841 --max-line-length=127 --statistics
 
       # Run tests with pytest
       - name: Test with pytest
@@ -51,9 +47,15 @@ jobs:
           poetry run pytest
 
   deploy: 
+    if: github.ref == 'refs/heads/main'  # Ensures this job only runs on main branch
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check out the code
+        uses: actions/checkout@v2  
+        with:
+          fetch-depth: 1
+
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v0
         with:
