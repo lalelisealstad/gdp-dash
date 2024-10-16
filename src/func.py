@@ -1,8 +1,8 @@
-
 import wbdata
 import pandas as pd
+import plotly.graph_objects as go
+import numpy as np
 
-import random  # Unused import
 
 def get_dict_countries(): 
     countries = wbdata.get_countries()
@@ -10,14 +10,8 @@ def get_dict_countries():
     countries_df = countries_df[['name', 'iso2Code']]
     countries_df = countries_df[~countries_df['iso2Code'].str[1].str.isdigit()]
     dict_c = dict(zip(countries_df['iso2Code'], countries_df['name']))
-    really_long_variable_name_that_is_too_long_for_pep8_and_should_cause_a_flake8_error = dict_c
     return dict_c
 
-
-
-import wbdata
-import pandas as pd
-from datetime import datetime
 
 def get_country_gdp(country_code): 
     
@@ -33,9 +27,6 @@ def get_country_gdp(country_code):
     
     return data
 
-
-
-import plotly.graph_objects as go
 
 def make_gdp_fig(data, country_name): 
     
@@ -82,7 +73,7 @@ def make_gdp_fig(data, country_name):
 
     return fig
 
-import numpy as np
+
 def get_last_gdp(country_name, data):
     
     max_row = data.sort_values(by='date', ascending=False).iloc[0]

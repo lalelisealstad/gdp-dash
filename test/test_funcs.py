@@ -1,11 +1,6 @@
-
-import pytest
 import pandas as pd
-from unittest.mock import patch
 
-from src.func import get_country_gdp, get_dict_countries, make_gdp_fig, get_last_gdp
-
-from wbdata import get_countries
+from src.func import get_country_gdp, get_dict_countries, get_last_gdp
 
 def test_get_dict_countries_api_call():
     result = get_dict_countries()

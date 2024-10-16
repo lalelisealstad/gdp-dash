@@ -2,8 +2,6 @@ from flask import Flask
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
-import requests
-from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 
 from src.func import get_country_gdp, get_dict_countries, make_gdp_fig, get_last_gdp
