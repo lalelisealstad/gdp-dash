@@ -76,9 +76,9 @@ jobs:
             HTTP_PORT=8080
 
       - name: Deploy to Cloud Run
-        uses: google-github-actions/deploy-cloudrun@main
+        uses: google-github-actions/deploy-cloudrun@v1
         with:
           image: gcr.io/gdp-dash/gdp-dash:latest
           service: gdp-dash
           region: europe-north1
-          allow-unauthenticated: false
+          allow-unauthenticated: True
