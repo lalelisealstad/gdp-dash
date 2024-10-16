@@ -1,6 +1,10 @@
-name: Python application
+name: GDP Dasboard app 
 
-on: [push]
+on: 
+    push:
+      branches:
+        - main
+
 
 jobs:
   build:
@@ -34,12 +38,12 @@ jobs:
       - name: Install project
         run: poetry install --no-interaction
 
-      # Lint with flake8
+        # Lint with flake8
       - name: Lint with flake8
         run: |
-          poetry run pip install flake8
-          poetry run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-          poetry run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+            poetry run pip install flake8
+            poetry run flake8 . --count --select=E402,F401,F811,F841 --max-line-length=127 --statistics
+
 
       # Run tests with pytest
       - name: Test with pytest
