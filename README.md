@@ -4,6 +4,8 @@ Simple Flask Dash app to see GDP of a country and see a figure showing the growt
 
 I created repo as a project to try out test files, github acitons workflow and IAM secirity settings to learn. 
 
+Unit testing and integration testing of the functions used in the dashboard. 
+
 
 
 ### Run app locally: 
@@ -14,7 +16,6 @@ $ python app.py
 
 ## TODO: 
 
-- different testing
 - github actions ruff linter and testing
 - github actions deploy to gcp 
 - make dashboard only visible to some authenticated users 

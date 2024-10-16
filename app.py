@@ -16,7 +16,6 @@ app = dash.Dash(__name__, server=server, external_stylesheets=[dbc.themes.FLATLY
 
 app.layout = html.Div(
     [
-        # First row: Sidebar (col-3) and main content (col-9)
         dbc.Row(
             [
                 # Sidebar
@@ -32,7 +31,7 @@ app.layout = html.Div(
                             searchable=True,
                             ),
                     ],
-                    width=4,
+                    xs=10, sm=10, md=10, lg=3, xl=3,
                     className='sidebar',
                     
                 ),
@@ -45,7 +44,7 @@ app.layout = html.Div(
                             dbc.Col(dcc.Graph(id='timeline-graph')),]
                         ),
                     ],
-                    width=8,
+                    xs=10, sm=10, md=10, lg=8, xl=8,
                     className='content'
                 ),
             ],
@@ -75,9 +74,6 @@ def update_components(country_code):
     
     
     return fig, country_gdp_text
-
-        
-    
 
 
 

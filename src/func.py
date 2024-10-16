@@ -17,7 +17,8 @@ import pandas as pd
 from datetime import datetime
 
 def get_country_gdp(country_code): 
-    indicator = 'NY.GDP.MKTP.CD'   
+    
+    indicator = 'NY.GDP.MKTP.CD' # gdp  
     
     data = wbdata.get_dataframe({indicator: 'GDP'}, country=country_code)
     

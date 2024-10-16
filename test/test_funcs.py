@@ -5,6 +5,35 @@ from unittest.mock import patch
 
 from src.func import get_country_gdp, get_dict_countries, make_gdp_fig, get_last_gdp
 
+from wbdata import get_countries
+
+def test_get_dict_countries_api_call():
+    result = get_dict_countries()
+
+    assert isinstance(result, dict)
+
+    # Check if the dictionary contains specific known countries
+    assert 'US' in result  # United States
+    assert 'GB' in result  # United Kingdom
+    assert 'FR' in result  # France
+    assert 'A9' not in result  # non countries should not be in result
+    assert result['US'] == 'United States'
+    
+    
+    
+
+def test_get_country_gdp_api_call():
+    country_code = 'US'
+    
+    result = get_country_gdp(country_code)
+    
+    assert isinstance(result, pd.DataFrame)
+    assert not result.empty
+    assert not result.isna().any().any()
+    assert 'GDP' in result.columns
+
+
+
 # Sample data for testing
 data = pd.DataFrame({
     'date': [2020, 2019, 2018],

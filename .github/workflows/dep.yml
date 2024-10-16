@@ -1,1 +1,37 @@
+name: Python application
 
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    # Install Poetry
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+
+    # Add Poetry to the system path
+    - name: Add Poetry to path
+      run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+    # Install project dependencies with Poetry
+    - name: Install dependencies
+      run: |
+        poetry install
+
+    # Lint with flake8 (if desired)
+    - name: Lint with flake8
+      run: |
+        poetry run pip install flake8
+        poetry run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        poetry run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    # Run tests with pytest
+    - name: Test with pytest
+      run: |
+        poetry run pytest
