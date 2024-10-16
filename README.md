@@ -2,7 +2,7 @@
 
 A simple Flask Dash app that allows users to search for a country and visualize its GDP growth. The app uses data from the World Bank API. The app includes a github actions workflow that does unit and integration testing, lintin, deploys the app to Cloud Run using docker. 
 
-[Available at](https://gdp-dash-812336563676.europe-north1.run.app/)
+Available at: [Link](https://gdp-dash-812336563676.europe-north1.run.app/)
 
 ![alt text](image.png)
 
