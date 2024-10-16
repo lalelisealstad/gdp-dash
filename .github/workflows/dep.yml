@@ -8,30 +8,40 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - name: Check out the code
+        uses: actions/checkout@v2  
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2  
+        with:
+          python-version: 3.10
+      
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+
     
-    # Install Poetry
-    - name: Install Poetry
-      run: |
-        curl -sSL https://install.python-poetry.org | python3 -
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry
+          key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-
 
-    # Add Poetry to the system path
-    - name: Add Poetry to path
-      run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-    # Install project dependencies with Poetry
-    - name: Install dependencies
-      run: |
-        poetry install
+      - name: Install project
+        run: poetry install --no-interaction
 
-    # Lint with flake8 (if desired)
-    - name: Lint with flake8
-      run: |
-        poetry run pip install flake8
-        poetry run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        poetry run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      # Lint with flake8
+      - name: Lint with flake8
+        run: |
+          poetry run pip install flake8
+          poetry run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          poetry run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-    # Run tests with pytest
-    - name: Test with pytest
-      run: |
-        poetry run pytest
+      # Run tests with pytest
+      - name: Test with pytest
+        run: |
+          poetry run pytest
