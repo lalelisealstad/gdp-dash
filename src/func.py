@@ -2,7 +2,6 @@ import wbdata
 import pandas as pd
 import plotly.graph_objects as go
 import numpy as np
-from google.cloud import pubsub_v1
 
 
 def get_dict_countries(): 
@@ -84,9 +83,3 @@ def get_last_gdp(country_name, data):
     return last_date, gdp_in_billions
 
 
-publisher = pubsub_v1.PublisherClient()
-topic_path = "projects/gdp-dash/topics/gdp-dash-topic"
-
-def publish_country_selection(country_name):
-    message = f"Selected country: {country_name}"
-    publisher.publish(topic_path, message.encode("utf-8"))
