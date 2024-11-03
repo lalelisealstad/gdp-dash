@@ -4,7 +4,7 @@ from dash import dcc, html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 
-from src.func import get_country_gdp, get_dict_countries, make_gdp_fig, get_last_gdp
+from src.func import get_country_gdp, get_dict_countries, make_gdp_fig, get_last_gdp, publish_country_selection
 
 # Initialize Flask
 server = Flask(__name__)
@@ -63,6 +63,9 @@ def update_components(country_code):
     data = get_country_gdp(country_code)
     
     country_name = dict_countries[country_code]
+    
+    # publish to pubsub for monitoring
+    publish_country_selection(country_name)
     
     fig = make_gdp_fig(data, country_name)
     
